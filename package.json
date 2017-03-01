@@ -1,0 +1,28 @@
+{
+  "name": "regex-golf-server",
+  "version": "1.0.0",
+  "description": "Server for regex-golf applications",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/artnick/regex-golf-server.git"
+  },
+  "keywords": [
+    "regex",
+    "regex-golf"
+  ],
+  "author": "Nikita Artemov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artnick/regex-golf-server/issues"
+  },
+  "homepage": "https://github.com/artnick/regex-golf-server#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongodb": "^2.2.24"
+  }
+}
