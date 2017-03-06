@@ -4,8 +4,8 @@
   "description": "Server for regex-golf applications",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "mongodb": "^2.2.24"
   },
   "devDependencies": {
+    "cross-env": "^3.2.3",
     "nodemon": "^1.11.0"
   }
 }
