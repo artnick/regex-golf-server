@@ -1,6 +1,6 @@
 var ObjectID = require('mongodb').ObjectID;
 module.exports = function(app, db) {
-  //read note
+  //read task
   app.get('/task/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
@@ -13,7 +13,7 @@ module.exports = function(app, db) {
     });
   });
 
-  //create note
+  //create task
   app.post('/task', (req, res) => {
     const task = { 
     	match: req.body.match.split('&'), 
