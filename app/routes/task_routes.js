@@ -1,5 +1,20 @@
+var ObjectID = require('mongodb').ObjectID;
 module.exports = function(app, db) {
-  app.post('/tasks', (req, res) => {
+  //read note
+  app.get('/task/:id', (req, res) => {
+    const id = req.params.id;
+    const details = { '_id': new ObjectID(id) };
+    db.collection('tasks').findOne(details, (err, item) => {
+      if (err) {
+        res.send({'error':'An error has occurred'});
+      } else {
+        res.send(item);
+      } 
+    });
+  });
+
+  //create note
+  app.post('/task', (req, res) => {
     const task = { 
     	match: req.body.match.split('&'), 
     	nomatch: req.body.nomatch.split('&')
