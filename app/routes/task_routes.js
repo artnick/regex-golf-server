@@ -1,4 +1,7 @@
 var ObjectID = require('mongodb').ObjectID;
+
+const separator = '&';
+
 module.exports = function(app, db) {
   //read task
   app.get('/task/:id', (req, res) => {
@@ -15,10 +18,15 @@ module.exports = function(app, db) {
 
   //create task
   app.post('/task', (req, res) => {
-    const task = { 
-    	match: req.body.match.split('&'), 
-    	nomatch: req.body.nomatch.split('&')
-    };
+    const keys = Object.keys(req.body);
+    const task = {};
+    keys.forEach( (key) => {
+      if(key == 'match' || key == 'nomatch')
+        task[key] = req.body[key].split(separator);
+      else
+        task[key] = req.body[key];
+    });
+
     db.collection('tasks').insert(task, (err, result) => {
       if (err) { 
         res.send({ 'error': 'An error has occurred' }); 
